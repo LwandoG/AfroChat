@@ -3,6 +3,7 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
 const config = require('config');
+const bcrypt = require('bcryptjs')
 
 const User = require('../models/User');
 
@@ -27,11 +28,12 @@ router.post('/', [
         let user = await User.findOne({ username });
         if(user) return res.status(400).json({ msg: 'Username already taken.' })
 
+        const hashedPass = await bcrypt.hash(password, 10);
         user = new User({
             name,
             username,
             email,
-            password
+            password: hashedPass
         });
 
         await user.save();
