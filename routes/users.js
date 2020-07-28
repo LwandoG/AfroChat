@@ -9,6 +9,8 @@ const User = require('../models/User');
 
 router.get('/', (req, res) => {res.send("Get users")});
 
+router.put('/')
+
 router.post('/', [
     check('name', 'Please enter name')
     .not().isEmpty(),

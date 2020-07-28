@@ -31,17 +31,17 @@ router.post('/', [authenticate, [
 
     try {
         let result = await User.findOne({ username });
+        let invalid = await Friend.findOne({ username })
         if(!result) return res.status(400).json({ msg: 'User not found.' })
+        if(invalid) return res.status(422).json({msg: 'Already in friend list.'})
 
         result.friends.push({user: req.user.id})
 
         let friendReq = new Friend({ username, user: req.user.id})
 
-        await friendReq.fr
+        await req.user.friends.push(friendReq)
 
-        let friend = await friendReq.save();
-
-        res.json(friend)
+        res.json(friendReq)
 
         //await user.save()
     } catch (error) {

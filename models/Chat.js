@@ -11,7 +11,7 @@ const ChatSchema = mongoose.Schema({
     },
     messageList: {
         type: Array,
-        required: true
+        default: []
     }
 });
 

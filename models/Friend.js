@@ -9,6 +9,10 @@ const FriendSchema = mongoose.Schema({
         type: String,
         required: true,
         unique: true
+    },
+    messages: {
+        type: Array,
+        default: []
     }
 });
 
