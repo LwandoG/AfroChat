@@ -4,6 +4,14 @@ const MessageSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users'
     },
+    senderName: {
+        type: String,
+        ref: 'users'
+    },
+    receipientName: {
+        type: String,
+        ref: 'users'
+    },
     
     receipient: {
         type: mongoose.Schema.Types.ObjectId,

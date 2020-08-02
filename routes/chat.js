@@ -5,38 +5,61 @@ const authenticate = require('../middleware/authorisation')
 const User = require('../models/User')
 const Friend = require('../models/Friend')
 const Message = require('../models/Message')
+const Chat = require('../models/Chat')
 
-router.get('/:username', authenticate, (req, res) => {res.send("Get Chat object")});
+
+router.get('/', authenticate, async (req, res) => {
+    try {
+        const chats = await Chat.find({ $or: [{ sender: req.user.id }, {receipient: req.user.id}]  });
+        res.json(chats)
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error')
+    }
+});
 
 router.post('/', [authenticate, [
     check('message', 'Message is required.').not().isEmpty()
-]], async (req, res) => {const errors = validationResult(req)
+]], async (req, res, next) => {const errors = validationResult(req)
     let { message, username } = req.body
     if(!errors.isEmpty()){
         return res.status(400).json({errors: errors.array()})
     }
 
     try {
-        let friend = await User.findOne({username});
-        if(!friend) return res.status(404).json({msg: "Friend not found."})
+        let receipient = await User.findOne({username});
+        if(!receipient) return res.status(404).json({msg: "Friend not found."})
 
-        console.log(friend.id)
-        console.log(req.user.id)
         /*if(friend.id  !== req.user.id){
             return res.status(401).json({msg: 'Unauthorised'})
         }*/
 
         const sender = await req.user.id;
-        const receipient = friend
+        let senderObj = await User.findById(sender)
+        //const senderObj = await User.findOne({sender});
+        const senderName = senderObj.name
+        const receipientName = receipient.name
+        console.log(sender)
+        
 
-        const newMessage = new Message({
-            sender,
-            receipient,
-            message,
-            date: Date.now()
-    })
-        await newMessage.save();
-        res.json(newMessage)
+        let chat = await Chat.find({ $or: [{ sender: req.user.id }, {receipient: req.user.id}]  })
+        
+            const newMessage = new Message({
+                sender,
+                senderName,
+                receipientName,
+                receipient,
+                message,
+                date: Date.now()
+        })
+
+        chat = await Chat.findOneAndUpdate({sender, receipient}, {$push: {messageList: newMessage}}, {upsert: true, new: true})
+       // chat.messageList.push(newMessage)
+        
+           res.json(await chat.save())
+        
+
+        
         
     } catch (error) {
         console.error(error)
