@@ -1,6 +1,9 @@
 export const GET_USERS = 'GET_USERS';
 export const ADD_FRIEND = 'ADD_FRIEND';
 export const GET_FRIEND = 'DELETE_CONTACT';
+export const SEND_MESSAGE = 'SEND_MESSAGE';
+export const GET_CHAT = 'GET_CHAT';
+export const CLEAR_CHAT = 'CLEAR_CHAT';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const USER_LOADED = 'USER_LOADED';

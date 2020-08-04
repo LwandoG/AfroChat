@@ -24,6 +24,7 @@
     "express-validator": "^6.6.0",
     "jsonwebtoken": "^8.5.1",
     "materialize-css": "^1.0.0",
-    "mongoose": "^5.9.25"
+    "mongoose": "^5.9.25",
+    "uuid": "^8.3.0"
   }
 }

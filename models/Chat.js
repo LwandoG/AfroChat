@@ -10,7 +10,7 @@ const ChatSchema = mongoose.Schema({
     },
     receipientName: {
         type: String
-    },  
+    }, 
     receipient: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
