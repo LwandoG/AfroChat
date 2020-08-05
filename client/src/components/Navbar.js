@@ -12,9 +12,9 @@ const Navbar = () => {
             </div>
             <div className="nav-content">
             <ul className="tabs tabs-transparent">
-                <li className="tab"><a href="#test1">Messages</a></li>
-                <li className="tab"><a href="#test2">Posts</a></li>
-                <li className="tab"><a href="#test4">Friends</a></li>
+                <li className="tab"><a href="/">Messages</a></li>
+                <li className="tab"><a href="/">Posts</a></li>
+                <li className="tab"><a href="/">Friends</a></li>
             </ul>
             </div>
         </nav>

@@ -6,6 +6,7 @@ import M from 'materialize-css/dist/js/materialize.min.js'
 import Navbar from './components/Navbar'
 import ChatState from './context/chat/chatState'
 import Chats from './components/Chats'
+import ChatList from './components/ChatList';
 
 function App() {
   useEffect(() => {
@@ -15,7 +16,14 @@ function App() {
   return (
     <ChatState>
       <Navbar />
-      <Chats />
+      <div className="col-sm-3">
+         <ChatList />
+      </div>
+      <div className="col">
+        <Chats />
+      </div>
+      
+      
     </ChatState>
       
   );
