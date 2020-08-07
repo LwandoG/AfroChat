@@ -27,7 +27,9 @@
     "material-ui": "^0.20.2",
     "materialize-css": "^1.0.0",
     "mongoose": "^5.9.25",
+    "react-chat-elements": "^10.9.3",
     "react-chat-ui": "^0.3.2",
+    "split.js": "^1.6.2",
     "uuid": "^8.3.0"
   }
 }

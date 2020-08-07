@@ -1,6 +1,5 @@
 import React, { useState, useContext } from 'react'
-import ChatList from './ChatList'
-import Message from './Message'
+import MessageItem from './MessageItem'
 import ChatContext from '../context/chat/chatContext'
 
 const Chats = (chat) => {
@@ -14,12 +13,12 @@ const Chats = (chat) => {
         receipientName: '',
         messageList: []
     })
+    console.log(activeChat.messageList)
     return (
-        <div>
-            
-            {activeChat.messageList.map(message => <Message chatObj={message} key={message.message}/>)}
-              
-        </div>
+        <>           
+            {activeChat.messageList.map(message => <MessageItem chatObj={message} key={message.id}/>)}        
+        </>
+        
     )
 }
 

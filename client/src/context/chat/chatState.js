@@ -25,7 +25,7 @@ const ChatState = props => {
                     date: Date.parse("2020-08-03T14:45:14.389+00:00") 
                     },
                     {
-                        id: '5f2822faf798c218188ca07e',
+                        id: '5f2822faf798c218188ca07b',
                         sender: 'xx',
                         senderName: "Jane Doe",
                         receipientName:"John Doe",
@@ -40,7 +40,7 @@ const ChatState = props => {
             },
             
         ],
-        activeChat:{id: 1,
+        activeChat:{id: 2,
             receipient: 'xx',
             sender: 'yy',
             senderName: 'John Doe',
@@ -56,12 +56,12 @@ const ChatState = props => {
                 date: Date.parse("2020-08-03T14:45:14.389+00:00") 
                 },
                 {
-                    id: '5f2822faf798c218188ca07e',
+                    id: '5f2822faf798c218188ca07b',
                     sender: 'xx',
                     senderName: "Jane Doe",
                     receipientName:"John Doe",
                     receipient:'yy',
-                    message:"test1",
+                    message:"yiyo",
                     date: Date.parse("2020-08-03T15:45:14.389+00:00") 
                 }
 
