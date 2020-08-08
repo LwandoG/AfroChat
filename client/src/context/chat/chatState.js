@@ -38,6 +38,33 @@ const ChatState = props => {
                 ]
                 
             },
+            {id: 3,
+                receipient: 'xx1',
+                sender: 'yy1',
+                senderName: 'Will Smith',
+                receipientName: 'John Doe',
+                messageList: [
+                    {
+                    id: 'yhcfgbj',
+                    sender: 'yy',
+                    senderName: "Will Smith",
+                    receipientName:"John Doe",
+                    receipient:'xx',
+                    message:"inside",
+                    date: Date.parse("2020-08-03T14:45:14.389+00:00") 
+                    },
+                    {
+                        id: 'hvkcjhy',
+                        sender: 'xx',
+                        senderName: "John Doe",
+                        receipientName:"Will Smith",
+                        receipient:'yy',
+                        message:"yiyo",
+                        date: Date.parse("2020-08-03T15:45:14.389+00:00") 
+                    }
+    
+                    
+                ]}
             
         ],
         activeChat:{id: 2,

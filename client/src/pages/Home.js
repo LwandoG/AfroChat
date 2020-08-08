@@ -4,12 +4,9 @@ import Chats from '../components/Chats'
 
 const Home = () => {
     return (
-        <div className='grid-2'>
+        <div className='grid-2' style={{flexDirection: 'row'}}>
             <div>
                 <ChatsList />
-            </div>
-            <div>
-              <Chats />
             </div>
         </div>
     )

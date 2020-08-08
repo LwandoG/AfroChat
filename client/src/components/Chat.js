@@ -12,7 +12,7 @@ const Chat = ({ chat }) => {
     
 
     return (
-        <a href="">
+        <a href="#view-messages" className="modal-trigger">
             <ChatItem
             avatarFlexible = {true}
             title={chat.receipientName}

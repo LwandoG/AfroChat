@@ -9,6 +9,7 @@ import Chats from './components/Chats'
 import ChatsList from './components/ChatsList';
 import Split from 'split.js'
 import Home from './pages/Home'
+import MessagesModal from './components/MessagesModal'
 
 function App() {
   useEffect(() => {
@@ -19,6 +20,7 @@ function App() {
     <ChatState>
       <Navbar />
       <Home />
+      <MessagesModal />
     </ChatState>
       
   );
