@@ -94,7 +94,6 @@ const ChatState = props => {
 
                 
             ]}
-
     }
     const [state, dispatch] = useReducer(ChatReducer, initialState)
 

@@ -1,12 +1,18 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useRef } from 'react'
 import { Input, Button } from 'react-chat-elements'
 import ChatContext from '../context/chat/chatContext'
 
 const MessageInput = () => {
     const chatContext = useContext(ChatContext)
     const {activeChat, sendMessage} = chatContext
-    const onSubmit = () => {
-        console.log(activeChat.messageList)
+    const text = useRef('')
+
+    const onChange = e => {
+        text.current.value = e.target.value
+    }
+
+    const onSend = () => {
+        sendMessage(text.current.value)
     }
 
 
@@ -14,12 +20,15 @@ const MessageInput = () => {
         <Input
             placeholder="Type your message..."
             multiline={true}
+            id = "my-input"
+            ref = {text}
+            onChange = {onChange}
             rightButtons={
                 <Button
                     color='white'
                     backgroundColor='blue'
                     text='Send'
-                    onClick={console.log(activeChat.messageList)}/>
+                    onClick={e => sendMessage(e.target.value)}/>
     }/>
     )
 }

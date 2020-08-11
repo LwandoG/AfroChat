@@ -6,6 +6,7 @@ export const GET_CHAT = 'GET_CHAT';
 export const CLEAR_CHAT = 'CLEAR_CHAT';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
+export const SEARCH_CHATS = 'SEARCH_CHATS'
 export const USER_LOADED = 'USER_LOADED';
 export const AUTH_ERROR = 'AUTH_ERROR';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
