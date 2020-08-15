@@ -15,6 +15,9 @@ const Alert = () => {
             
         )
     }
+    else {
+        return <></>
+    }
 
     
 }

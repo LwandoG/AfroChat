@@ -1,18 +1,35 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import AlertContext from '../context/alert/AlertContext'
+import AuthContext from '../context/auth/AuthContext'
 
 const Register = () => {
+    const alertContext = useContext(AlertContext)
+    const authContext = useContext(AuthContext)
+
+    const { setAlert } = alertContext;
+
+    const { registerUser, error } = authContext;
+
+
     const [user, setUser] = useState({
         name: '',
         username: '',
         email: '',
         password: ''})
 
+        useEffect(() => {
+            if(error){
+                console.log(error);
+            }
+        })
+
         const { name, username, email, password } = user;
         const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
 
         const onSubmit = e => {
             e.preventDefault()
-            console.log("Registered")
+            if(name === '' || username === '' || email === '' || password === '') setAlert("All fields are required.")
+            else registerUser({name, username, email, password})
         }
 
     return (
