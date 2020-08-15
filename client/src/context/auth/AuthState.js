@@ -34,8 +34,10 @@ const AuthState = props => {
         }
     }
 
+    const clearErrors = () => dispatch({ type: CLEAR_ERRORS });
+
     return(
-        <AuthContext.Provider value={{token: state.token, isAuthenticated: state.isAuthenticated, loading: state.loading, user: state.user, error: state.error, registerUser}}>
+        <AuthContext.Provider value={{token: state.token, isAuthenticated: state.isAuthenticated, loading: state.loading, user: state.user, error: state.error, registerUser, clearErrors}}>
             {props.children}
         </AuthContext.Provider>
     )

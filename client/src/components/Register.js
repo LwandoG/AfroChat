@@ -19,9 +19,9 @@ const Register = () => {
 
         useEffect(() => {
             if(error){
-                console.log(error);
+                setAlert(error)
             }
-        })
+        }, [error])
 
         const { name, username, email, password } = user;
         const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
