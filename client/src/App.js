@@ -5,11 +5,12 @@ import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js'
 import Navbar from './components/Navbar'
 import ChatState from './context/chat/chatState'
-import Chats from './components/Chats'
-import ChatsList from './components/ChatsList';
-import Split from 'split.js'
+import AuthState from './context/auth/authState'
+import AlertState from './context/alert/AlertState'
+import Alert from './components/Alert'
 import Home from './pages/Home'
-import MessagesModal from './components/MessagesModal'
+import Register from './components/Register'
+import Login from './components/Login'
 
 function App() {
   useEffect(() => {
@@ -17,11 +18,21 @@ function App() {
   })
 
   return (
-    <ChatState>
-      <Navbar />
-      <Home />
-      <MessagesModal />
-    </ChatState>
+    <AuthState>
+      <ChatState>
+        <AlertState>
+          <Router>
+          <Navbar />
+          <Alert />
+          <Switch>
+            <Route exact path ='/' component={Home} />
+            <Route exact path ='/register' component={Register} />
+            <Route exact path ='/login' component={Login} />
+          </Switch>
+          </Router>
+        </AlertState>
+      </ChatState>
+    </AuthState>
       
   );
 }

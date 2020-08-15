@@ -2,6 +2,7 @@ import React, {useContext} from 'react'
 import PropTypes from 'prop-types'
 import ChatContext from '../context/chat/chatContext'
 import Chat from './Chat'
+import "react-chat-elements/dist/main.css";
 
 
 const ChatList = () => {

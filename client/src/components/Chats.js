@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import MessageItem from './MessageItem'
 import ChatContext from '../context/chat/chatContext'
+import "react-chat-elements/dist/main.css";
 
 const Chats = () => {
     const chatContext = useContext(ChatContext)

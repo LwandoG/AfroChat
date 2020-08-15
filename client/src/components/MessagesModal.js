@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import Chats from './Chats'
 import ChatContext from '../context/chat/chatContext'
 import MessageInput from './MessageInput'
+import "react-chat-elements/dist/main.css";
 
 const MessagesModal = () => {
     const chatContext = useContext(ChatContext)

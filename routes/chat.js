@@ -53,7 +53,7 @@ router.post('/', [authenticate, [
                 date: Date.now()
         })
 
-        chat = await Chat.findOneAndUpdate({sender, receipient}, {$push: {messageList: newMessage}, $set: {receipientName: receipientName}}, {upsert: true, new: true})
+        chat = await Chat.findOneAndUpdate({sender, receipient}, {$push: {messageList: newMessage}, $set: {receipientName, senderName}}, {upsert: true, new: true})
        // chat.messageList.push(newMessage)
         
            res.json(await chat.save())
