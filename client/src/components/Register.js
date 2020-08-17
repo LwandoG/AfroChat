@@ -2,13 +2,13 @@ import React, { useState, useContext, useEffect } from 'react'
 import AlertContext from '../context/alert/AlertContext'
 import AuthContext from '../context/auth/AuthContext'
 
-const Register = () => {
+const Register = props => {
     const alertContext = useContext(AlertContext)
     const authContext = useContext(AuthContext)
 
     const { setAlert } = alertContext;
 
-    const { registerUser, error } = authContext;
+    const { registerUser, error, clearError, isAuthenticated } = authContext;
 
 
     const [user, setUser] = useState({
@@ -18,10 +18,12 @@ const Register = () => {
         password: ''})
 
         useEffect(() => {
+            if(isAuthenticated) props.history.push('/')
             if(error){
-                setAlert(error)
+                setAlert(error);
+                clearError();
             }
-        }, [error])
+        }, [error, isAuthenticated, props.history])
 
         const { name, username, email, password } = user;
         const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
@@ -35,7 +37,7 @@ const Register = () => {
     return (
         <div className="form-container">
             <h1>Account Registration</h1>
-            <form>
+            <form onSubmit={onSubmit}>
                 <div className="form-group">
                 <label htmlFor='name'>Name</label>
                 <input id='name' type='text' name='name' value={name} onChange={onChange} required />
@@ -52,7 +54,7 @@ const Register = () => {
                 <label htmlFor='password'>Password</label>
                 <input id='password' type='password' name='password' value={password} onChange={onChange} required minLength='6' />
                 </div>
-                <button type="submit" onClick={onSubmit}>Submit</button>
+                <input type='submit' value='Register'className='btn btn-primary btn-block'/>
             </form>
             
         </div>

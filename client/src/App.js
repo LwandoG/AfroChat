@@ -11,11 +11,13 @@ import Alert from './components/Alert'
 import Home from './pages/Home'
 import Register from './components/Register'
 import Login from './components/Login'
+import setAuthToken from './Token'
 
 function App() {
   useEffect(() => {
     M.AutoInit();
   })
+  if(localStorage.token) setAuthToken(localStorage.token);
 
   return (
     <AuthState>

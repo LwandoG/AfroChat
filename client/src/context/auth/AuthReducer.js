@@ -1,11 +1,12 @@
-import { REGISTER_SUCCESS,REGISTER_FAIL,USER_LOADED,AUTH_ERROR,LOGIN_SUCCESS,LOGIN_FAIL,LOGOUT,CLEAR_ERRORS} from '../../types';
+import { REGISTER_SUCCESS,REGISTER_FAIL,LOAD_USER,AUTH_ERROR,LOGIN_SUCCESS,LOGIN_FAIL,LOGOUT,CLEAR_ERRORS} from '../../types';
 
 export default (state, action) => {
     switch(action.query){
         case REGISTER_SUCCESS:
             localStorage.setItem('token', action.payload.token);
-            return { ...state, ...action.payload, isAuthenticated: true };
+            return { ...state, ...action.payload, isAuthenticated: true, loading: false };
 
+        case AUTH_ERROR:
         case REGISTER_FAIL:
             localStorage.removeItem('token');
             return {
@@ -14,6 +15,14 @@ export default (state, action) => {
                 isAuthenticated: false,
                 user: null,
                 error: action.payload
+            };
+
+        case LOAD_USER:
+            return {
+                ...state,
+                isAuthenticated: true,
+                loading: false,
+                user: action.payload
             };
 
         case CLEAR_ERRORS:

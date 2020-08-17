@@ -1,4 +1,4 @@
-import {GET_CHAT, CLEAR_CHAT, SEND_MESSAGE} from '../../types'
+import {GET_CHAT, CLEAR_CHAT, SEND_MESSAGE, SEARCH_CHATS} from '../../types'
 
 export default (state, action) => {
     switch(action.query){
@@ -17,6 +17,7 @@ export default (state, action) => {
                     ...state,
                     activeChat: null
                 }
+        
         default: 
            return null
     }

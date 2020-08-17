@@ -28,7 +28,7 @@ router.post('/', [
     const {name, username, email, password} = req.body;
     try {
         let user = await User.findOne({ username });
-        if(user) return res.status(400).json({ msg: 'Username already taken.' })
+        if(user) return res.status(400).json({ message: 'Username already taken.' })
 
         const hashedPass = await bcrypt.hash(password, 10);
         user = new User({
