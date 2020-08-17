@@ -49,6 +49,26 @@ const AuthState = props => {
         }
     }
 
+    const loginUser = async userDetails => {
+        const configuration = { headers: {'Content-Type': 'application/json'}}
+
+        try {
+            const res = await axios.post('/api/auth', userDetails, configuration)
+
+            dispatch({
+                type: LOGIN_SUCCESS,
+                payload: res.data
+            })
+            loadUser();
+        } catch (error) {
+            //console.log(error)
+            dispatch({
+                type: LOGIN_FAIL,
+                payload: error.response.data.message
+            })
+        }
+    }
+
     const clearError = () => dispatch({ type: CLEAR_ERRORS });
 
     return(

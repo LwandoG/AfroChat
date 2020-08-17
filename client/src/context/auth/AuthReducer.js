@@ -2,11 +2,13 @@ import { REGISTER_SUCCESS,REGISTER_FAIL,LOAD_USER,AUTH_ERROR,LOGIN_SUCCESS,LOGIN
 
 export default (state, action) => {
     switch(action.query){
+        case LOGIN_SUCCESS:
         case REGISTER_SUCCESS:
             localStorage.setItem('token', action.payload.token);
             return { ...state, ...action.payload, isAuthenticated: true, loading: false };
 
         case AUTH_ERROR:
+        case LOGIN_FAIL:
         case REGISTER_FAIL:
             localStorage.removeItem('token');
             return {
