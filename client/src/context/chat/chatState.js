@@ -1,11 +1,14 @@
-import React, {useReducer, useState}  from 'react';
+import React, {useReducer, useState, useContext}  from 'react';
 import uuid from 'uuid';
+import axios from 'axios'
 import ChatReducer from './chatReducer'
 import ChatContext from './chatContext';
+import AuthContext from '../auth/AuthContext'
 
 import {GET_CHAT, SEND_MESSAGE} from '../../types'
 
 const ChatState = props => {
+    const authContext = useContext(AuthContext)
     const initialState = {
         chats: [
             {
@@ -102,7 +105,18 @@ const ChatState = props => {
     //Delete Chat
 
     //Update Chat
-    const sendMessage = chat => {
+    const sendMessage = async chat => {
+        const configuration = {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          };
+
+          try {
+              const res = await axios.post('/api/chat', chat, configuration)
+          } catch (error) {
+              
+          }
         dispatch({ query: SEND_MESSAGE, payload: chat})
     }
 

@@ -8,6 +8,7 @@ export default (state, action) => {
             localStorage.setItem('token', action.payload.token);
             return { ...state, ...action.payload, isAuthenticated: true, loading: false };
 
+        case LOGOUT:
         case AUTH_ERROR:
         case LOGIN_FAIL:
         case REGISTER_FAIL:
