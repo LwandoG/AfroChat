@@ -20,6 +20,7 @@ const Register = props => {
         useEffect(() => {
             if(isAuthenticated) props.history.push('/')
             if(error){
+                console.log(error)
                 setAlert(error);
                 clearError();
             }

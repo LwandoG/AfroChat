@@ -4,7 +4,7 @@ export default (state, action) => {
     switch(action.query){
         case LOGIN_SUCCESS:
         case REGISTER_SUCCESS:
-            console.log(action.payload.token)
+            console.log(action.payload)
             localStorage.setItem('token', action.payload.token);
             return { ...state, ...action.payload, isAuthenticated: true, loading: false };
 

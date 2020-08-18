@@ -9,7 +9,7 @@ const authenticate = require('../middleware/authorisation');
 const User = require('../models/User');
 
 //Get logged in user
-router.get('/', authenticate, async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         id = req.user.id;
         const user = await User.findById(id);
