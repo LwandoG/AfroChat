@@ -2,7 +2,7 @@ import React, {useReducer}  from 'react';
 import AuthContext from './AuthContext';
 import authReducer from './AuthReducer'
 import axios from 'axios'
-import setAuthToken from '../../Token'
+import setAuthToken from '../../setAuthToken'
 
 import {REGISTER_SUCCESS, REGISTER_FAIL, LOAD_USER, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT, CLEAR_ERRORS} from '../../types'
 
@@ -53,7 +53,7 @@ const AuthState = props => {
         const configuration = { headers: {'Content-Type': 'application/json'}}
 
         try {
-            const res = await axios.post('/api/auth', userDetails, configuration)
+            const res = await axios.post('/api/authorisation', userDetails, configuration)
 
             dispatch({
                 type: LOGIN_SUCCESS,

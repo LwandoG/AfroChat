@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
@@ -11,9 +11,12 @@ import Alert from './components/Alert'
 import Home from './pages/Home'
 import Register from './components/Register'
 import Login from './components/Login'
-import setAuthToken from './Token'
+import setAuthToken from './setAuthToken'
+import AuthContext from './context/auth/AuthContext'
 
 function App() {
+  const authContext = useContext(AuthContext)
+  const { isAuthenticated} = authContext;
   useEffect(() => {
     M.AutoInit();
   })
