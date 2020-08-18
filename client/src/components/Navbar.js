@@ -1,12 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import AuthContext from '../context/auth/AuthContext'
 
 const Navbar = () => {
-    return (
+    const authContext = useContext(AuthContext)
+    const { isAuthenticated, logout, user, loadUser } = authContext;
+
+    const userNav = (
         <nav className="nav-extended indigo">
             <div className="nav-wrapper">
             <a href="/" className="brand-logo left">AfroChat</a>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
-            <li><a href="/"><i className="material-icons">search</i></a></li>
+            <li><a href="/">About Us</a></li>
                 <li><a href="badges.html">Logout</a></li>
             </ul>
             </div>
@@ -18,7 +22,23 @@ const Navbar = () => {
             </ul>
             </div>
         </nav>
- 
+    )
+
+    const newNav = (
+        <nav className="nav-extended indigo">
+            <div className="nav-wrapper">
+            <a href="/" className="brand-logo left">AfroChat</a>
+            <ul id="nav-mobile" className="right hide-on-med-and-down">
+            <li><a href="/register">Register</a></li>
+            <li><a href="/login">Login</a></li>
+            </ul>
+            </div>
+        </nav>
+    )
+    return (
+        <div>
+        {isAuthenticated ? userNav :newNav}
+        </div>
     )
 }
 
