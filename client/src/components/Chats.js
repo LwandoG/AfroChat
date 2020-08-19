@@ -1,22 +1,18 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect  } from 'react'
 import MessageItem from './MessageItem'
 import ChatContext from '../context/chat/chatContext'
 import "react-chat-elements/dist/main.css";
 
 const Chats = () => {
     const chatContext = useContext(ChatContext)
-    const {activeChat, sendMessage} = chatContext
+    const {chats, activeChat, sendMessage, getChats} = chatContext
 
-    const [conversation, setConversation] = useState({
-        receipient: '',
-        sender: '',
-        senderName: '',
-        receipientName: '',
-        messageList: []
-    })
+    useEffect(() => {
+        getChats()
+    }, [])
     return (
         <>           
-            {activeChat.messageList.map(message => <MessageItem chatObj={message} key={message.id}/>)}        
+            {chats.length > 0 ? activeChat.messageList.map(message => <MessageItem chatObj={message} key={message.id}/>) : <h5>No messages</h5>}        
         </>
         
     )

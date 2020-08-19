@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import ChatContext from '../context/chat/chatContext'
 import Chat from './Chat'
@@ -7,11 +7,15 @@ import "react-chat-elements/dist/main.css";
 
 const ChatList = () => {
     const chatContext = useContext(ChatContext)
+    const {chats, activeChat, sendMessage, getChats} = chatContext
 
-    const {chats} = chatContext
+    useEffect(() => {
+        getChats()
+    }, [])
+
     return (
         <>
-          {chats.map(chat => <Chat chat={chat} key={chat.id}/>)}  
+          {chats.length > 0 ? chats.map(chat => <Chat chat={chat} key={chat.id}/>): <h5>No chats</h5>}  
         </>
     )
 }

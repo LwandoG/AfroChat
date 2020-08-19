@@ -5,71 +5,12 @@ import ChatReducer from './chatReducer'
 import ChatContext from './chatContext';
 import AuthContext from '../auth/AuthContext'
 
-import {GET_CHAT, SEND_MESSAGE} from '../../types'
+import {GET_CHAT, GET_CHATS, SEND_MESSAGE, CHAT_ERROR} from '../../types'
 
 const ChatState = props => {
     const authContext = useContext(AuthContext)
     const initialState = {
-        chats: [
-            {
-                id: 1,
-                receipient: 'xx',
-                sender: 'yy',
-                senderName: 'John Doe',
-                receipientName: 'Jane Doe',
-                messageList: [
-                    {
-                    id: '5f2822faf798c218188ca07e',
-                    sender: 'yy',
-                    senderName: "John Doe",
-                    receipientName:"Jane Doe",
-                    receipient:'xx',
-                    message:"test",
-                    date: Date.parse("2020-08-03T14:45:14.389+00:00") 
-                    },
-                    {
-                        id: '5f2822faf798c218188ca07b',
-                        sender: 'xx',
-                        senderName: "Jane Doe",
-                        receipientName:"John Doe",
-                        receipient:'yy',
-                        message:"test1",
-                        date: Date.parse("2020-08-03T15:45:14.389+00:00") 
-                    }
-
-                    
-                ]
-                
-            },
-            {id: 3,
-                receipient: 'xx1',
-                sender: 'yy1',
-                senderName: 'Will Smith',
-                receipientName: 'John Doe',
-                messageList: [
-                    {
-                    id: 'yhcfgbj',
-                    sender: 'yy',
-                    senderName: "Will Smith",
-                    receipientName:"John Doe",
-                    receipient:'xx',
-                    message:"inside",
-                    date: Date.parse("2020-08-03T14:45:14.389+00:00") 
-                    },
-                    {
-                        id: 'hvkcjhy',
-                        sender: 'xx',
-                        senderName: "John Doe",
-                        receipientName:"Will Smith",
-                        receipient:'yy',
-                        message:"yiyo",
-                        date: Date.parse("2020-08-03T15:45:14.389+00:00") 
-                    }
-    
-                    
-                ]}
-            
-        ],
+        chats: [],
         activeChat:{id: 2,
             receipient: 'xx',
             sender: 'yy',
@@ -96,13 +37,22 @@ const ChatState = props => {
                 }
 
                 
-            ]}
+            ]},
+            error: null
     }
     const [state, dispatch] = useReducer(ChatReducer, initialState)
 
-    //Add Chat
+    const getChats = async () => {
 
-    //Delete Chat
+          try {
+              const res = await axios.get('/api/chat')
+              dispatch({ query: GET_CHATS, payload: res.data})
+          } catch (err) {
+              console.error(err)
+              dispatch({query: CHAT_ERROR, payload: err.response.message})
+          }
+        
+    }
 
     //Update Chat
     const sendMessage = async chat => {
@@ -135,7 +85,8 @@ const ChatState = props => {
     //Clear filter chats
 
     return(
-        <ChatContext.Provider value={{chats: state.chats, activeChat: state.activeChat, messageList: state.activeChat.messageList, sendMessage, setActiveChat}}>
+        <ChatContext.Provider value={{chats: state.chats, 
+        activeChat: state.activeChat, messageList: state.activeChat.messageList, error: state.error, sendMessage, setActiveChat, getChats}}>
             {props.children}
         </ChatContext.Provider>
     )

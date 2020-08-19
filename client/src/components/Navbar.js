@@ -11,7 +11,7 @@ const Navbar = () => {
             <a href="/" className="brand-logo left">AfroChat</a>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li><a href="/">About Us</a></li>
-                {/*<li><a href="#!" onClick={logout()}>Logout</a></li>*/}
+                <li><a href="#!">Logout</a></li>
             </ul>
             </div>
             <div className="nav-content">
