@@ -59,6 +59,7 @@ const AuthState = props => {
                 type: LOGIN_SUCCESS,
                 payload: res.data
             })
+            localStorage.setItem('token', res.data.token);
             loadUser();
         } catch (error) {
             //console.log(error)

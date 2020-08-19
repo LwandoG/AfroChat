@@ -9,13 +9,14 @@ const authenticate = require('../middleware/authorisation');
 const User = require('../models/User');
 
 //Get logged in user
-router.get('/', async (req, res) => {
+router.get('/', authenticate, async (req, res) => {
     try {
-        id = req.user.id;
+        id = req.user.id
         const user = await User.findById(id);
+        console.log(user)
         res.json(user);
     } catch (error) {
-        console.error(err.message);
+        console.error(error);
         res.status(500).send('Could not reach server.');
     }
 });
@@ -46,7 +47,7 @@ router.post('/', [
         })
 
     } catch (err) {
-        console.error(err.message);
+        console.error(err);
         res.status(500).send('Could not reach server.');
     }
 });

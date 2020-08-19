@@ -5,7 +5,7 @@ import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js'
 import Navbar from './components/Navbar'
 import ChatState from './context/chat/chatState'
-import AuthState from './context/auth/authState'
+import AuthState from './context/auth/AuthState'
 import AlertState from './context/alert/AlertState'
 import Alert from './components/Alert'
 import Home from './pages/Home'
