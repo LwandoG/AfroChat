@@ -1,6 +1,6 @@
 import React, {useReducer}  from 'react';
 import AuthContext from './AuthContext';
-import authReducer from './AuthReducer'
+import AuthReducer from './AuthReducer'
 import axios from 'axios'
 import setAuthToken from '../../setAuthToken'
 
@@ -14,14 +14,13 @@ const AuthState = props => {
         user: null,
         error: null
     }
-    const [state, dispatch] = useReducer(authReducer, initialState)
+    const [state, dispatch] = useReducer(AuthReducer, initialState)
 
     const loadUser = async () => {
-        setAuthToken(localStorage.token);
+        if(localStorage.token) setAuthToken(localStorage.token);
     
         try {
           const res = await axios.get('/api/authorisation');
-    
           dispatch({
             type: LOAD_USER, payload: res.data});
         } catch (err) {

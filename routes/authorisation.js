@@ -13,7 +13,7 @@ router.get('/', authenticate, async (req, res) => {
     try {
         id = req.user.id
         const user = await User.findById(id);
-        console.log(user)
+        //console.log(user)
         res.json(user);
     } catch (error) {
         console.error(error);

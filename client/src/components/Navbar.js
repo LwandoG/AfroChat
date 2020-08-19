@@ -28,7 +28,7 @@ const Navbar = () => {
         <nav className="nav-extended indigo">
             <div className="nav-wrapper">
             <a href="/" className="brand-logo left">AfroChat</a>
-            <ul id="nav-mobile" className="right hide-on-med-and-down">
+            <ul id="nav-mobile" className="right">
             <li><a href="/register">Register</a></li>
             <li><a href="/login">Login</a></li>
             </ul>

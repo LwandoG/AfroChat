@@ -1,7 +1,7 @@
 import { REGISTER_SUCCESS,REGISTER_FAIL,LOAD_USER,AUTH_ERROR,LOGIN_SUCCESS,LOGIN_FAIL,LOGOUT,CLEAR_ERRORS} from '../../types';
 
 export default (state, action) => {
-    switch(action.query){
+    switch(action.type){
         case LOGIN_SUCCESS:
         case REGISTER_SUCCESS:
             //console.log(action.payload)
@@ -23,6 +23,7 @@ export default (state, action) => {
             };
 
         case LOAD_USER:
+            //console.log(action.payload)
             return {
                 ...state,
                 isAuthenticated: true,
