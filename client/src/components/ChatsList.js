@@ -5,7 +5,7 @@ import Chat from './Chat'
 import "react-chat-elements/dist/main.css";
 
 
-const ChatList = () => {
+const ChatsList = () => {
     const chatContext = useContext(ChatContext)
     const {chats, activeChat, sendMessage, getChats} = chatContext
 
@@ -13,6 +13,7 @@ const ChatList = () => {
         getChats()
     }, [])
 
+    console.log(activeChat)
     return (
         <>
           {chats.length > 0 ? chats.map(chat => <Chat chat={chat} key={chat.id}/>): <h5>No chats</h5>}  
@@ -20,4 +21,4 @@ const ChatList = () => {
     )
 }
 
-export default ChatList;
+export default ChatsList;

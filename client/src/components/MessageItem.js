@@ -10,7 +10,7 @@ const MessageItem = (messageObj ) => {
     const mess = messageObj.chatObj.message
     const msg = new Message({id:idd, message: mess})
     return (
-        <ChatBubble message={msg}/>
+        <ChatBubble message={msg} key={idd}/>
     )
 }
 

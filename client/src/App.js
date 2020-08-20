@@ -13,6 +13,8 @@ import Register from './components/Register'
 import Login from './components/Login'
 import setAuthToken from './setAuthToken'
 import AuthContext from './context/auth/AuthContext'
+import Messages from './components/Messages'
+import About from './components/About'
 
 function App() {
   const authContext = useContext(AuthContext)
@@ -33,6 +35,7 @@ function App() {
             <Route exact path ='/' component={Home} />
             <Route exact path ='/register' component={Register} />
             <Route exact path ='/login' component={Login} />
+            <Route exact path ='/about' component={About} />
           </Switch>
           </Router>
         </AlertState>

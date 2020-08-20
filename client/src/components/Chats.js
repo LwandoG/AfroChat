@@ -7,9 +7,9 @@ const Chats = () => {
     const chatContext = useContext(ChatContext)
     const {chats, activeChat, sendMessage, getChats} = chatContext
 
-    useEffect(() => {
+    {/*useEffect(() => {
         getChats()
-    }, [])
+    }, [])*/}
     return (
         <>           
             {chats.length > 0 ? activeChat.messageList.map(message => <MessageItem chatObj={message} key={message.id}/>) : <h5>No messages</h5>}        
