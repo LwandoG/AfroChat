@@ -13,6 +13,7 @@ const Chat = ({ chat }) => {
     const {chats, sendMessage, setActiveChat, clearActiveChat} = chatContext
     const { user } = authContext
     
+    console.log(chats)
 
     return (
         <a href="#view-messages" className="modal-trigger" data-toggle="modal" data-target="#view-messages">

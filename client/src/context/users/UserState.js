@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react'
-import { GET_USERS, USERS_ERROR } from '../types';
+import { GET_USERS, USERS_ERROR, SET_CURRENT, CLEAR_CURRENT } from '../types';
 import axios from 'axios'
 import UserContext from './UserContext';
 import UserReducer from './UserReducer';
@@ -10,7 +10,7 @@ const UserState = props => {
         current: null,
         error: null
       };
-      const [state, dispatch] = useReducer(contactReducer, initialState);
+      const [state, dispatch] = useReducer(UserReducer, initialState);
 
       const getUsers = async () => {
 
@@ -27,13 +27,18 @@ const UserState = props => {
   const setCurrent = user => {
     dispatch({ type: SET_CURRENT, payload: user });
   };
+
+  const clearCurrent = user => {
+    dispatch({ type: CLEAR_CURRENT });
+  };
     return (
         <UserContext.Provider value={{
             users: state.users,
             current: state.current,
             error: state.error,
             getUsers,
-            setCurrent
+            setCurrent,
+            clearCurrent
           }}>
             {props.children}
         </UserContext.Provider>
