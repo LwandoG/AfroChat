@@ -7,7 +7,23 @@ const bcrypt = require('bcryptjs')
 
 const User = require('../models/User');
 
-router.get('/', (req, res) => {res.send("Get users")});
+router.get('/', (req, res) => {
+    try {
+        let usersList = User.find({}, (err, users) => {
+            let userArr = []
+            let count = 0
+
+            users.forEach(user => {
+                userArr[count] = user;
+                count++;
+            })
+
+            res.send(userArr);
+        })
+    } catch (err) {
+        console.error(err)
+    }
+});
 
 router.put('/')
 

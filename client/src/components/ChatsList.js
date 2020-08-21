@@ -12,8 +12,8 @@ const ChatsList = () => {
     useEffect(() => {
         getChats()
     }, [])
+    console.log(chats)
 
-    console.log(activeChat)
     return (
         <>
           {chats.length > 0 ? chats.map(chat => <Chat chat={chat} key={chat.id}/>): <h5>No chats</h5>}  

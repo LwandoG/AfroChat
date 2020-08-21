@@ -15,7 +15,7 @@ const Chat = ({ chat }) => {
     
 
     return (
-        <a href="#view-messages" className="modal-trigger">
+        <a href="#view-messages" className="modal-trigger" data-toggle="modal" data-target="#view-messages">
             <ChatItem
             avatarFlexible = {true}
             title={chat.receipientName === user.name ? chat.senderName : chat.receipientName}

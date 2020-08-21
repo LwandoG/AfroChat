@@ -1,10 +1,13 @@
 import React from 'react'
+import { ChatItem } from 'react-chat-elements'
 
-const User = () => {
+const User = user => {
     return (
-        <div>
-            
-        </div>
+        <ChatItem
+        avatarFlexible = {true}
+        title={user.name}
+        key = {user.id}
+        />
     )
 }
 

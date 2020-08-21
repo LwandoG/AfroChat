@@ -9,7 +9,7 @@ const Navbar = () => {
         <nav className="nav-extended indigo">
             <div className="nav-wrapper">
             <a href="/" className="brand-logo left">AfroChat</a>
-            <ul id="nav-mobile" className="right hide-on-med-and-down">
+            <ul id="nav-mobile" className="right">
             <li><a href="/about">About Us</a></li>
                 <li><a href="#!">Logout</a></li>
             </ul>

@@ -13,7 +13,7 @@ const Messages = () => {
             className='message-list'
             lockable={true}
             toBottomHeight={'100%'}
-            dataSource={messages.map(message => <MessageItem chatObj={message} key={message.id}/>)} />
+            dataSource={activeChat.messageList.map(message => <MessageItem chatObj={message} key={message.id}/>)} />
     )
 }
 

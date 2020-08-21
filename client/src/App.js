@@ -15,6 +15,7 @@ import setAuthToken from './setAuthToken'
 import AuthContext from './context/auth/AuthContext'
 import Messages from './components/Messages'
 import About from './components/About'
+import Users from './components/Users'
 
 function App() {
   const authContext = useContext(AuthContext)
@@ -36,6 +37,7 @@ function App() {
             <Route exact path ='/register' component={Register} />
             <Route exact path ='/login' component={Login} />
             <Route exact path ='/about' component={About} />
+            <Route exact path ='/users' component={Users} />
           </Switch>
           </Router>
         </AlertState>

@@ -6,8 +6,8 @@ import { ChatBubble, Message } from 'react-chat-ui'
 import "react-chat-elements/dist/main.css";
 
 const MessageItem = (messageObj ) => {
-    const idd = messageObj.chatObj.id
-    const mess = messageObj.chatObj.message
+    const idd = messageObj.id
+    const mess = messageObj.message
     const msg = new Message({id:idd, message: mess})
     return (
         <ChatBubble message={msg} key={idd}/>
